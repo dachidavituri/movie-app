@@ -3,9 +3,12 @@ import { Link } from "react-router";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { Menu, X, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ChangeLanguage } from "../change-language";
+import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
@@ -22,24 +25,25 @@ const Header: React.FC = () => {
             to="/"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            Home
+            {t("header.home")}
           </Link>
           <Link
             to="/movies"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            Movies
+            {t("header.movies")}
           </Link>
           <Link
             to="/favorites"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            Favorites
+            {t("header.favorites")}
           </Link>
         </nav>
 
         <div className="flex items-center gap-3">
           <ModeToggle />
+          <ChangeLanguage />
 
           <Button
             variant="ghost"
