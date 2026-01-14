@@ -1,10 +1,10 @@
-import Layout from "./components/layout";
 import { ThemeProvider } from "./components/theme/theme-provider";
+import AppRoutes from "./routes";
 
 const App: React.FC = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Layout />
+      <AppRoutes />
     </ThemeProvider>
   );
 };

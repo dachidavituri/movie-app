@@ -1,0 +1,23 @@
+{
+  "title": "About MovieBox",
+  "description": "Discover, explore, and save your favorite movies with MovieBox. Enjoy trailers, reviews, ratings, and create your personal watchlist. Our mission is to bring the magic of cinema to your fingertips.",
+  "features": [
+    {
+      "title": "Explore Movies",
+      "description": "Browse thousands of movies, watch trailers, and read detailed reviews."
+    },
+    {
+      "title": "Rate & Review",
+      "description": "Rate movies, leave reviews, and see what others think before watching."
+    },
+    {
+      "title": "Build Community",
+      "description": "Connect with other movie lovers, share watchlists, and join discussions."
+    }
+  ],
+  "cta": {
+    "title": "Start Your Movie Journey Today",
+    "description": "Explore our huge movie database, save your favorites, and discover new films every day. MovieBox is your ultimate cinematic companion.",
+    "button": "Browse Movies"
+  }
+}

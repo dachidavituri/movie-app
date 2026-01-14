@@ -5,6 +5,8 @@ import headerKa from "./ka/header.json";
 import headerEn from "./en/header.json";
 import footerKa from "./ka/footer.json";
 import footerEn from "./en/footer.json";
+import aboutKa from "./ka/about.json";
+import aboutEn from "./en/about.json";
 
 const options = {
   order: ["path"],
@@ -26,12 +28,14 @@ i18n
         translation: {
           header: headerKa,
           footer: footerKa,
+          about: aboutKa,
         },
       },
       en: {
         translation: {
           header: headerEn,
           footer: footerEn,
+          about: aboutEn,
         },
       },
     },

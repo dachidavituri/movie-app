@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router";
 import { Film, Github, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { MAIN_PATH } from "@/routes/default-layout/main/index.enum";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <footer className="mt-20 border-t bg-background/80 backdrop-blur">
+    <footer className=" border-t bg-background/80 backdrop-blur">
       <div className="container mx-auto px-4 py-12 grid gap-8 md:grid-cols-4">
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-xl font-bold">
@@ -24,17 +25,26 @@ const Footer: React.FC = () => {
           <h3 className="mb-4 font-semibold">{t("footer.navigation")}</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/" className="hover:text-primary transition">
+              <Link
+                to={MAIN_PATH.HOME}
+                className="hover:text-primary transition"
+              >
                 {t("footer.home")}
               </Link>
             </li>
             <li>
-              <Link to="/movies" className="hover:text-primary transition">
+              <Link
+                to={MAIN_PATH.MOVIES}
+                className="hover:text-primary transition"
+              >
                 {t("footer.movies")}
               </Link>
             </li>
             <li>
-              <Link to="/favorites" className="hover:text-primary transition">
+              <Link
+                to={MAIN_PATH.FAVORITES}
+                className="hover:text-primary transition"
+              >
                 {t("footer.favorites")}
               </Link>
             </li>
@@ -45,7 +55,10 @@ const Footer: React.FC = () => {
           <h3 className="mb-4 font-semibold">{t("footer.discover")}</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/" className="hover:text-primary transition">
+              <Link
+                to={MAIN_PATH.ABOUT}
+                className="hover:text-primary transition"
+              >
                 {t("footer.about")}
               </Link>
             </li>
