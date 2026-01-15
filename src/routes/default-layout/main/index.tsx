@@ -2,6 +2,7 @@ import { Route } from "react-router";
 import { lazy, Suspense } from "react";
 import Loading from "@/components/loading";
 import { MAIN_PATH } from "./index.enum";
+import MoviesGridSkeleton from "@/pages/movies/components/MovieGridSkeleton";
 const HomeView = lazy(() => import("@/pages/home/views"));
 const AboutView = lazy(() => import("@/pages/about/views"));
 const MoviesView = lazy(() => import("@/pages/movies/views"));
@@ -30,7 +31,7 @@ export const MAIN_ROUTES = [
     key={MAIN_PATH.MOVIES}
     path={MAIN_PATH.MOVIES}
     element={
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<MoviesGridSkeleton count={15} />}>
         <MoviesView />
       </Suspense>
     }

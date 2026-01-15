@@ -1,9 +1,5 @@
-
-
 const Favorites: React.FC = () => {
-  return (
-    <div>favorites</div>
-  )
-}
+  return <div>favorites</div>;
+};
 
-export default Favorites
+export default Favorites;
