@@ -7,6 +7,7 @@ const HomeView = lazy(() => import("@/pages/home/views"));
 const AboutView = lazy(() => import("@/pages/about/views"));
 const MoviesView = lazy(() => import("@/pages/movies/views"));
 const FavoritesView = lazy(() => import("@/pages/favorites/views"));
+const MovieDetailView = lazy(() => import("@/pages/movie-detail/views"));
 
 export const MAIN_ROUTES = [
   <Route
@@ -33,6 +34,15 @@ export const MAIN_ROUTES = [
     element={
       <Suspense fallback={<MoviesGridSkeleton count={15} />}>
         <MoviesView />
+      </Suspense>
+    }
+  ></Route>,
+  <Route
+    key={MAIN_PATH.MOVIE_DETAILS}
+    path={MAIN_PATH.MOVIE_DETAILS}
+    element={
+      <Suspense fallback={<Loading />}>
+        <MovieDetailView />
       </Suspense>
     }
   ></Route>,

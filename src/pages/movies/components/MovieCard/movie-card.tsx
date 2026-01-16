@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { Heart } from "lucide-react";
-import { useFavorites } from "@/hooks/useFavorites";
-import type { Movie } from "../../views/index.types";
+import { useFavorites, type FavoriteMovie } from "@/hooks/useFavorites";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
-type Props = { movie: Movie };
+type Props = { movie: FavoriteMovie };
 
 const MovieCard: React.FC<Props> = ({ movie }) => {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
@@ -17,13 +17,17 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
   };
 
   const favorite = isFavorite(movie.id);
+  const currentLang = useCurrentLang();
 
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
-      <Link to={`/movie/${movie.id}`} className="group relative block">
+      <Link
+        to={`/${currentLang}/movies/${movie.id}`}
+        className="group relative block"
+      >
         <img
           src={
             movie.poster_path

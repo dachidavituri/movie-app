@@ -1,19 +1,26 @@
-import type { Movie } from "@/pages/movies/views/index.types";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 const FAVORITES_KEY = "favoriteMovies";
 
-let listeners: ((favorites: Movie[]) => void)[] = [];
+export interface FavoriteMovie {
+  id: number;
+  title: string;
+  poster_path: string | null;
+  release_date: string;
+  vote_average: number;
+}
+
+let listeners: ((favorites: FavoriteMovie[]) => void)[] = [];
 
 export const useFavorites = () => {
-  const [favorites, setFavorites] = useState<Movie[]>(() => {
+  const [favorites, setFavorites] = useState<FavoriteMovie[]>(() => {
     const stored = localStorage.getItem(FAVORITES_KEY);
     return stored ? JSON.parse(stored) : [];
   });
 
   useEffect(() => {
-    const listener = (updated: Movie[]) => setFavorites(updated);
+    const listener = (updated: FavoriteMovie[]) => setFavorites(updated);
     listeners.push(listener);
 
     return () => {
@@ -21,11 +28,11 @@ export const useFavorites = () => {
     };
   }, []);
 
-  const notify = (updated: Movie[]) => {
+  const notify = (updated: FavoriteMovie[]) => {
     listeners.forEach((l) => l(updated));
   };
 
-  const addFavorite = (movie: Movie) => {
+  const addFavorite = (movie: FavoriteMovie) => {
     if (!favorites.find((m) => m.id === movie.id)) {
       const updated = [...favorites, movie];
       setFavorites(updated);
