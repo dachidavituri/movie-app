@@ -12,6 +12,20 @@ export const getMovies = async (page: number = 1): Promise<MoviesResponse> => {
   return response.data;
 };
 
+export const searchMovies = async (
+  query: string,
+  page: number = 1,
+): Promise<MoviesResponse> => {
+  const response = await httpMoviesClient.get("/search/movie", {
+    params: {
+      query,
+      page,
+      include_adult: false,
+    },
+  });
+  return response.data;
+};
+
 export const getMovieDetails = async (id: string): Promise<MovieDetails> => {
   const res = await httpMoviesClient.get(`/movie/${id}`);
   return res.data;

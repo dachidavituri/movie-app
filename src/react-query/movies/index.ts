@@ -5,6 +5,7 @@ import {
   getMovies,
   getMovieVideos,
   getSimilarMovies,
+  searchMovies,
 } from "@/api/movies";
 import type {
   MovieDetails,
@@ -12,10 +13,15 @@ import type {
   MovieVideosResponse,
 } from "@/api/movies/index.types";
 
-export const useGetMovies = (page: number = 1) => {
+export const useGetMovies = (page: number = 1, search?: string) => {
   return useQuery<MoviesResponse>({
-    queryKey: [MOVIES_QUERY_KEYS.MOVIES, page],
-    queryFn: () => getMovies(page),
+    queryKey: [MOVIES_QUERY_KEYS.MOVIES, page, search],
+    queryFn: () => {
+      if (search && search.trim() !== "") {
+        return searchMovies(search, page);
+      }
+      return getMovies(page);
+    },
   });
 };
 
