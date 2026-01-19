@@ -7,13 +7,21 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
 import Search from "../components/Search";
 import MoviesNotFound from "../components/MoviesNotFound";
+import Filter from "../components/Filter";
 
 const Movies: React.FC = () => {
+  const [selectedGenre, setSelectedGenre] = useState<number | undefined>();
+  const [minRating, setMinRating] = useState<number | undefined>();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
   const [searched, setSearched] = useState<string>("");
   const debouncedSearched = useDebounce(searched, 1200);
-  const { data: movies } = useGetMovies(page, debouncedSearched);
+  const { data: movies } = useGetMovies(
+    page,
+    debouncedSearched,
+    selectedGenre,
+    minRating,
+  );
 
   useEffect(() => {
     setSearchParams((prev) => {
@@ -21,10 +29,11 @@ const Movies: React.FC = () => {
       params.set("page", "1");
       return params;
     });
-  }, [debouncedSearched, setSearchParams]);
+  }, [debouncedSearched, setSearchParams, minRating]);
 
   return (
     <div className="container mx-auto px-4 py-6">
+      <Filter setMinRating={setMinRating} setSelectedGenre={setSelectedGenre} />
       <Search setSearched={setSearched} />
       <h1 className="text-2xl font-bold mb-6 mt-7">🔥 Popular Movies</h1>
 

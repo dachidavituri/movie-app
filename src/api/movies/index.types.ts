@@ -30,6 +30,15 @@ export type SpokenLanguage = {
   name: string;
 };
 
+export type Genres = {
+  id: number;
+  name: string;
+};
+
+export interface GenresResponse {
+  genres: Genre[];
+}
+
 export type MovieDetails = {
   adult: boolean;
   backdrop_path: string | null;

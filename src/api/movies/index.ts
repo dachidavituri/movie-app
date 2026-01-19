@@ -1,5 +1,6 @@
 import { httpMoviesClient } from "..";
 import type {
+  GenresResponse,
   MovieDetails,
   MoviesResponse,
   MovieVideosResponse,
@@ -40,5 +41,27 @@ export const getMovieVideos = async (
 
 export const getSimilarMovies = async (id: string): Promise<MoviesResponse> => {
   const res = await httpMoviesClient.get(`/movie/${id}/similar`);
+  return res.data;
+};
+
+export const getGenres = async (): Promise<GenresResponse> => {
+  const res = await httpMoviesClient.get("/genre/movie/list");
+  return res.data;
+};
+
+export const discoverMovies = async (params: {
+  page: number;
+  genre?: number;
+  minRating?: number;
+}): Promise<MoviesResponse> => {
+  const res = await httpMoviesClient.get("/discover/movie", {
+    params: {
+      page: params.page,
+      with_genres: params.genre,
+      "vote_average.gte": params.minRating,
+      sort_by: "popularity.desc",
+    },
+  });
+
   return res.data;
 };
