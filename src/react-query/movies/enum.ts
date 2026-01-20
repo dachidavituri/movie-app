@@ -4,4 +4,6 @@ export const MOVIES_QUERY_KEYS = {
   MOVIE_VIDEOS: "movie-videos",
   MOVIE_SIMILAR: "movie-similar",
   GENRES: "genres",
+  TRENDING: "trending",
+  TOPRATED: "top-rated",
 } as const;

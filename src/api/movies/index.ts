@@ -65,3 +65,13 @@ export const discoverMovies = async (params: {
 
   return res.data;
 };
+
+export const getTrengingMovies = async () => {
+  const response = await httpMoviesClient.get("/trending/movie/day");
+  return response.data;
+};
+
+export const getTopRatedMovies = async () => {
+  const response = await httpMoviesClient.get("/movie/top_rated");
+  return response.data;
+};

@@ -7,6 +7,8 @@ import {
   getMovies,
   getMovieVideos,
   getSimilarMovies,
+  getTopRatedMovies,
+  getTrengingMovies,
   searchMovies,
 } from "@/api/movies";
 import type {
@@ -64,5 +66,19 @@ export const useGenres = () => {
   return useQuery<GenresResponse>({
     queryKey: [MOVIES_QUERY_KEYS.GENRES],
     queryFn: getGenres,
+  });
+};
+
+export const useTrendingMovies = () => {
+  return useQuery({
+    queryKey: [MOVIES_QUERY_KEYS.TRENDING],
+    queryFn: getTrengingMovies,
+  });
+};
+
+export const useTopRatedMovies = () => {
+  return useQuery({
+    queryKey: [MOVIES_QUERY_KEYS.TOPRATED],
+    queryFn: getTopRatedMovies,
   });
 };
