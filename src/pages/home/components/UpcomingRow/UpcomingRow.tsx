@@ -3,9 +3,11 @@ import MovieCard from "@/pages/movies/components/MovieCard";
 import Loading from "@/components/loading";
 import { Carousel } from "antd";
 import type { Movie } from "@/pages/movies/views/index.types";
+import { useSlidesCount } from "@/hooks/useSlidesCount";
 
 const UpcomingRow: React.FC = () => {
   const { data, isLoading } = useUpcomingMovies();
+  const slidesToShow = useSlidesCount(4);
 
   if (isLoading) return <Loading />;
 
@@ -18,12 +20,8 @@ const UpcomingRow: React.FC = () => {
         dots={false}
         arrows
         infinite
-        slidesToShow={3}
-        slidesToScroll={2}
-        responsive={[
-          { breakpoint: 768, settings: { slidesToShow: 2 } },
-          { breakpoint: 480, settings: { slidesToShow: 1 } },
-        ]}
+        slidesToShow={slidesToShow}
+        slidesToScroll={1}
       >
         {movies.map((movie: Movie) => (
           <div key={movie.id} className="px-2">

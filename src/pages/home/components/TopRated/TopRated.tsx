@@ -3,9 +3,11 @@ import MovieCard from "@/pages/movies/components/MovieCard";
 import Loading from "@/components/loading";
 import { Carousel } from "antd";
 import type { Movie } from "@/pages/movies/views/index.types";
+import { useSlidesCount } from "@/hooks/useSlidesCount";
 
 const TopRatedRow: React.FC = () => {
   const { data, isLoading } = useTopRatedMovies();
+  const slidesToShow = useSlidesCount(5);
 
   if (isLoading) return <Loading />;
 
@@ -20,14 +22,8 @@ const TopRatedRow: React.FC = () => {
         dots={false}
         arrows
         infinite
-        slidesToShow={5}
+        slidesToShow={slidesToShow}
         slidesToScroll={2}
-        responsive={[
-          { breakpoint: 1280, settings: { slidesToShow: 4 } },
-          { breakpoint: 1024, settings: { slidesToShow: 3 } },
-          { breakpoint: 768, settings: { slidesToShow: 2 } },
-          { breakpoint: 480, settings: { slidesToShow: 1 } },
-        ]}
       >
         {movies.map((movie: Movie) => (
           <div key={movie.id} className="px-2">

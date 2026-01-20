@@ -35,7 +35,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
               : "https://via.placeholder.com/500x750?text=No+Image"
           }
           alt={movie.title}
-          className="w-full h-90 object-cover rounded-xl"
+          className="w-full aspect-2/3 object-cover rounded-xl"
         />
 
         <button
