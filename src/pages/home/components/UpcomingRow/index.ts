@@ -1,1 +1,1 @@
-export {default} from './UpcomingRow'
+export { default } from "./UpcomingRow";
