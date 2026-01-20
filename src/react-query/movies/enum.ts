@@ -6,4 +6,5 @@ export const MOVIES_QUERY_KEYS = {
   GENRES: "genres",
   TRENDING: "trending",
   TOPRATED: "top-rated",
+  UPCOMING: "upcoming"
 } as const;

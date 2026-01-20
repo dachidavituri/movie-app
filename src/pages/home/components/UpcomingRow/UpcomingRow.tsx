@@ -1,11 +1,11 @@
-import { useTrendingMovies } from "@/react-query/movies";
+import { useUpcomingMovies } from "@/react-query/movies";
 import MovieCard from "@/pages/movies/components/MovieCard";
 import Loading from "@/components/loading";
 import { Carousel } from "antd";
 import type { Movie } from "@/pages/movies/views/index.types";
 
-const TrendingRow: React.FC = () => {
-  const { data, isLoading } = useTrendingMovies();
+const UpcomingRow: React.FC = () => {
+  const { data, isLoading } = useUpcomingMovies();
 
   if (isLoading) return <Loading />;
 
@@ -13,16 +13,15 @@ const TrendingRow: React.FC = () => {
 
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-bold mb-4">🔥 Trending Today</h2>
+      <h2 className="text-2xl font-bold mb-4">🔥 Upcoming Movies</h2>
       <Carousel
         dots={false}
         arrows
         infinite
-        slidesToShow={6}
+        slidesToShow={3}
         slidesToScroll={2}
         responsive={[
-          { breakpoint: 1280, settings: { slidesToShow: 4 } },
-          { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      
           { breakpoint: 768, settings: { slidesToShow: 2 } },
           { breakpoint: 480, settings: { slidesToShow: 1 } },
         ]}
@@ -37,4 +36,4 @@ const TrendingRow: React.FC = () => {
   );
 };
 
-export default TrendingRow;
+export default UpcomingRow;

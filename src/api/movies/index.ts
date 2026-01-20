@@ -75,3 +75,8 @@ export const getTopRatedMovies = async () => {
   const response = await httpMoviesClient.get("/movie/top_rated");
   return response.data;
 };
+
+export const getUpcomingMovies = async () => {
+  const response = await httpMoviesClient.get("/movie/upcoming");
+  return response.data;
+};

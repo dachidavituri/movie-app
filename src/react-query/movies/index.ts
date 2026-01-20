@@ -9,6 +9,7 @@ import {
   getSimilarMovies,
   getTopRatedMovies,
   getTrengingMovies,
+  getUpcomingMovies,
   searchMovies,
 } from "@/api/movies";
 import type {
@@ -82,3 +83,12 @@ export const useTopRatedMovies = () => {
     queryFn: getTopRatedMovies,
   });
 };
+
+export const useUpcomingMovies = () => {
+  return useQuery({
+    queryKey: [MOVIES_QUERY_KEYS.UPCOMING],
+    queryFn: getUpcomingMovies,
+  });
+};
+
+
