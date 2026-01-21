@@ -12,7 +12,6 @@ const TopRatedRow: React.FC = () => {
   if (isLoading) return <Loading />;
 
   const movies = data?.results.slice(0, 15) || [];
-  console.log(movies);
 
   return (
     <div className="mb-12 relative">
